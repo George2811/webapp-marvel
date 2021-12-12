@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 import Paginator from "../components/Paginator";
+import Searcher from "../components/Searcher";
 import { helpHttp } from "../helpers/helpHttp";
 
-const initialHerores= [
+/*const initialHerores= [
     {
         "id": 1010354,
         "name": "Adam Warlock",
@@ -101,31 +102,35 @@ const initialHerores= [
         },
     }
 ]
-
+*/
 const SuperHeroesPage = () => {
     const [heroes, setHeroes] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [nameSearch, setNameSearch] = useState('');
     const [offset, setOffset] = useState(0);
     
     let url = `https://gateway.marvel.com:443/v1/public/characters?limit=20&offset=${offset}&apikey=7731c14827d6b11928ab689603159fa5`;
 
     useEffect(() => {
+        const searched = nameSearch ? `${url}&nameStartsWith=${nameSearch}` : url;
         setLoading(true)
-        helpHttp().get(url).then((res) => {
-            if(!res.err){
+
+        helpHttp().get(searched).then((res) => {
+            if(!res.err && res.data.results){ // maybe is Or, not AND?
                 setHeroes(res.data.results);
             } else {
                 setHeroes(null);
             }
-            setLoading(false);      
-        });
-    }, [url]);
+            setLoading(false);
+        });        
+    }, [nameSearch, offset]);
+
     
 
     return (
         <>
-            <Box className='search-container'>
-                <h2>Searcher ... </h2>
+            <Box className='search-container'>                
+                <Searcher nameSearch={nameSearch} setNameSearch={setNameSearch} />
                 <Paginator setOffset={setOffset} />
             </Box>
             <div className="cards-container">
@@ -134,7 +139,9 @@ const SuperHeroesPage = () => {
                    heroes !== null ?
                    heroes.map((e) => <Card key={e.id} name={e.name} img={e.thumbnail.path} ext={e.thumbnail.extension} ></Card>)
                    :
-                   <h4>An error ocurred, try it later :(</h4>
+                   <div className="error-container">
+                       <h4>The superheroes are busy, maybe later :)</h4>
+                   </div>
                 }  
             </div>
         </>
