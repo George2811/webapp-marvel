@@ -15,8 +15,8 @@ const Footer = () => {
                     <li><Button color="inherit" onClick={() => handleNavigate('/')}>Home</Button></li>
                     <li><Button color="inherit" onClick={() => handleNavigate('/superheroes')}>Super Heroes</Button></li>
                     <li><Button color="inherit" onClick={() => handleNavigate('/comics')}>Comics</Button></li>
-                </ul>
-                <p>copyright &copy;2021 marvel_Api. designed by <span>jsanv.dev</span></p>
+                </ul>                
+                <p>Data provided by Marvel. © 2021 MARVEL & designed by <span>jsanv.dev</span></p>
             </div>
         </footer>
     );

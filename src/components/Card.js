@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const heroesUseStyles = makeStyles({
   root: {
     width: 210,
     height: 312,
@@ -17,13 +17,27 @@ const useStyles = makeStyles({
     maxHeight: 242,
   },
   textContent: {
-    minHeight: 212,
-    maxHeight: 242,
+    minHeight: 312,
+  }
+});
+const comicsUseStyles = makeStyles({
+  root: {    
+    height: 312,
+    width: 210,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  media: {
+    minHeight: 110, 
+    maxHeight: '100%',    
+  },
+  textContent: {    
+    height: '100%',
   }
 });
 
-const MediaCard = ({name, img, ext}) => {
-  const classes = useStyles();
+const MediaCard = ({name, img, ext, isHeroe=true}) => {
+  const classes = isHeroe? heroesUseStyles() : comicsUseStyles();
 
   return (
     <Card className={classes.root}>

@@ -29,7 +29,7 @@ const Paginator = ({setOffset}) => {
 
   return (
     <div className={classes.root}>
-      <Pagination count={40} shape="rounded" color='secondary' classes={{ ul: classes.ul }} page={page} onChange={handleChange} />
+      <Pagination count={78} shape="rounded" color='secondary' classes={{ ul: classes.ul }} page={page} onChange={handleChange} />
     </div>
   );
 

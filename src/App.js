@@ -3,6 +3,7 @@ import "./App.css"
 import AppBar from "./components/AppBar"
 import Footer from "./components/Footer";
 import ComicsPage from "./pages/ComicsPage";
+import HomePage from "./pages/HomePage";
 import SuperHeroesPage from "./pages/SuperHeroesPage";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <Router>
         <AppBar />
         <Routes>
-          <Route path="/" element={<h2>Home</h2>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/superheroes" element={<SuperHeroesPage />} />
           <Route path="/comics" element={<ComicsPage />} />
         </Routes>
