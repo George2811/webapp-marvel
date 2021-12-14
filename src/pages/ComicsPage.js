@@ -38,7 +38,7 @@ const ComicsPage = () => {
                 {loading && <Loader />}
                 {
                 comics !== null ?                
-                comics.map((e) => <Card key={e.id} name={e.title} img={e.thumbnail.path} ext={e.thumbnail.extension} isHeroe={false} ></Card>)
+                comics.map((e) => <Card key={e.id} id={e.id} name={e.title} img={e.thumbnail.path} ext={e.thumbnail.extension} isHeroe={false} ></Card>)
                 :
                 <div className="error-container">
                     <h3>No comics available, maybe later :)</h3>

@@ -1,6 +1,6 @@
 import "./CardsSection.css"
 
-const CardsSection = ({ title="Empty", emoji=" ", children }) => {
+const CardsSection = ({ big=false, title="Empty", emoji=" ", children }) => {
     //name, img, ext, isHeroe=true
     return(
         <div className="main-box">
@@ -8,7 +8,8 @@ const CardsSection = ({ title="Empty", emoji=" ", children }) => {
                 <h2>{title}</h2>
                 <p>{emoji}</p> 
             </div>
-            <div className="cards-box">
+            
+            <div className={big?'big-cards-box':'cards-box'}>
                 {children}                
             </div>            
         </div>

@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { useNavigate } from 'react-router-dom';
 
 const heroesUseStyles = makeStyles({
   root: {
@@ -44,12 +45,17 @@ const comicsUseStyles = makeStyles({
   }
 });
 
-const MediaCard = ({name, img, ext, isHeroe=true}) => {
+const MediaCard = ({id, name, img, ext, isHeroe=true}) => {
   const classes = isHeroe? heroesUseStyles() : comicsUseStyles();
+
+  let navigate = useNavigate();
+  const handleNavigation = (idParam) => {
+    isHeroe ? navigate(`/superheroes/${idParam}`) : navigate(`/comics/${idParam}`);
+  }
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={() => handleNavigation(id)}>
         <CardMedia
           className={classes.media}
           image={`${img}.${ext}`}

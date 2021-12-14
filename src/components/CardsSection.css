@@ -26,8 +26,21 @@
     grid-gap: 0 6rem;
 }
 
+.big-cards-box {
+    margin: 3rem auto;
+    display: grid;
+    width: fit-content;
+    grid-template-columns: repeat(4, 1fr);  
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem 6rem;
+}
+
 @media (max-width:1250px) {
     .cards-box{
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem 5rem;
+    } 
+    .big-cards-box{
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 2rem 5rem;
     } 
@@ -37,5 +50,9 @@
     .cards-box{
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 1rem 1rem;    
-    } 
+    }
+    .big-cards-box{
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem 1rem;
+      } 
 }  

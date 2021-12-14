@@ -38,7 +38,7 @@ const SuperHeroesPage = () => {
                 {loading && <Loader />}
                 {
                    heroes !== null ?
-                   heroes.map((e) => <Card key={e.id} name={e.name} img={e.thumbnail.path} ext={e.thumbnail.extension} ></Card>)
+                   heroes.map((e) => <Card key={e.id} id={e.id} name={e.name} img={e.thumbnail.path} ext={e.thumbnail.extension} ></Card>)
                    :
                    <div className="error-container">
                        <h3>The superheroes are busy, maybe later :)</h3>
