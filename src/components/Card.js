@@ -15,6 +15,10 @@ const heroesUseStyles = makeStyles({
     width:210,
     minHeight: 212,
     maxHeight: 242,
+    "&:hover" : {
+      height: 220,
+      width: 230,
+    }
   },
   textContent: {
     minHeight: 312,
@@ -29,8 +33,12 @@ const comicsUseStyles = makeStyles({
   },
   media: {
     minHeight: 110, 
-    maxHeight: '100%',    
-  },
+    maxHeight: '100%',
+    "&:hover" : {
+      height: 120,
+      width: 250,
+    }
+  },  
   textContent: {    
     height: '100%',
   }

@@ -12,9 +12,9 @@ const ComicsPage = () => {
     const [nameSearch, setNameSearch] = useState('');
     const [offset, setOffset] = useState(0);
 
-    let url = `https://gateway.marvel.com:443/v1/public/comics?limit=20&offset=${offset}&apikey=7731c14827d6b11928ab689603159fa5`;
-
+    
     useEffect(() => {
+        let url = `https://gateway.marvel.com:443/v1/public/comics?limit=20&offset=${offset}&apikey=7731c14827d6b11928ab689603159fa5`;
         const searched = nameSearch ? `${url}&titleStartsWith=${nameSearch}` : url;
         setLoading(true);
 

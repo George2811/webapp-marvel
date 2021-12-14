@@ -59,7 +59,7 @@ const HomePage = () => {
             </CardsSection>
 
             {loadingComics && <Loader />}
-            <CardsSection data={comics} title="Last comics" emoji="💥">
+            <CardsSection data={comics} title="Last comics" emoji="📚">
             {
                 comics !== null ?                
                 comics.map((e) => <Card key={e.id} name={e.title} img={e.thumbnail.path} ext={e.thumbnail.extension} isHeroe={false} ></Card>)

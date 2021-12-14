@@ -19,7 +19,7 @@
 }
 
 .cards-box {
-    margin: 2rem auto;
+    margin: 3rem auto;
     display: grid;
     width: fit-content;
     grid-template-columns: repeat(4, 1fr);    
