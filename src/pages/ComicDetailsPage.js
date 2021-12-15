@@ -4,7 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import { helpHttp } from "../helpers/helpHttp";
 import Loader from "../components/Loader";
-
+import CardsSection from "../components/CardsSection";
+import CardComponent from "../components/Card";
+import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -48,32 +50,44 @@ const useStyles = makeStyles({
   });
 
 const ComicsDetailsPage = () => {
+    const { id } = useParams();
     const [data, setData] = useState(null);
+    const [creators, setCreators] = useState([]);
     const [loading, setLoading] = useState(false);
     const classes = useStyles();
 
-    const url = 'https://gateway.marvel.com:443/v1/public/comics/91992?apikey=7731c14827d6b11928ab689603159fa5';
-
+    let url = `https://gateway.marvel.com:443/v1/public/comics/${id}?apikey=7731c14827d6b11928ab689603159fa5`;
+    
     useEffect(() => {
         setLoading(true);
 
         helpHttp().get(url).then((res) => {
             if(!res.err && res.data.results){
-                setData(res.data.results[0]);          
-                console.log(res.data.results[0]);          
+                setData(res.data.results[0]);
             } else {
                 setData(null);                
             }
             setLoading(false);
         });        
-    }, []);
+    }, [url]);
+
+    useEffect(() => {
+        if (data === null) return;
+        if (data.creators.available<1) return;
+
+        setLoading(true);
+        
+        helpHttp().get(`${data.creators.items[0].resourceURI}/comics?limit=8&apikey=7731c14827d6b11928ab689603159fa5`).then((res) => {
+            if(!res.err && res.data.results) {
+                setCreators(res.data.results);
+            } 
+            setLoading(false);
+        });
+    }, [data]);
 
     const goTo = (link) => {
         window.location.replace(link);
     } 
-
-    // TODO: Creatonrs info
-    //Options: More comics by the creator, 
 
     return(
         <div>
@@ -93,7 +107,7 @@ const ComicsDetailsPage = () => {
 
                     <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
                     {
-                    data.description || `It's so epic that there are no words to describe it 🤯, mayble later.`
+                    data.description || `It's so epic that there are no words to describe it 🤯, maybe later.`
                     }
                     </Typography>
                     
@@ -103,7 +117,7 @@ const ComicsDetailsPage = () => {
                                 <MenuBookOutlined />
                             </IconButton>
                         </Tooltip>                            
-                        <Tooltip title={data.pageCount + ' pages'}>
+                        <Tooltip title={data.pageCount>0? `${data.pageCount} pages`: '? pages'}>
                             <IconButton color="secondary" aria-label="Pages" className={classes.icon} >
                                 <NoteOutlined />
                             </IconButton>
@@ -128,6 +142,12 @@ const ComicsDetailsPage = () => {
             <div className="error-container">            
                 <h2>There´s no info about the comic yet</h2><p>😢</p>
             </div>
+            }
+            {
+                creators.length > 0 && 
+                <CardsSection big={creators.length>4} title="Made by the creator" emoji="✏️" >
+                    {creators.map((e) => <CardComponent key={e.id} id={e.id} name={e.title} img={e.thumbnail.path} ext={e.thumbnail.extension} isHeroe={false} ></CardComponent>)}
+                </CardsSection>
             }
         </div>
     );

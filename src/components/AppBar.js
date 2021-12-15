@@ -38,7 +38,7 @@ const NavBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title} color="secondary">
-            Marvel
+            Wiki-Marvel
           </Typography>
           
           <Button className={classes.btn} color="inherit" onClick={() => handleNavigate('/')}>Home</Button>

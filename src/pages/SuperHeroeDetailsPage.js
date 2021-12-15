@@ -68,7 +68,7 @@ const SuperHeroeDetailsPage = () => {
         helpHttp().get(url).then((res) => {
             if(!res.err && res.data.results){
                 setData(res.data.results[0]);          
-                console.log(res.data.results[0]);          
+     
             } else {
                 setData(null);                
             }
@@ -82,7 +82,7 @@ const SuperHeroeDetailsPage = () => {
         helpHttp().get(comicsUrl).then((res) => {
             if(!res.err && res.data.results.length){
                 setComics(res.data.results);          
-                console.log(res.data.results);          
+         
             } else {
                 setComics(null);                
             }
@@ -143,8 +143,8 @@ const SuperHeroeDetailsPage = () => {
             }
             {
                 comics &&
-                <CardsSection big={comics.length>4} title="Some comics" emoji="📚" data={data}>
-                    {comics.map((e) => <CardComponent key={e.id} name={e.title} img={e.thumbnail.path} ext={e.thumbnail.extension} isHeroe={false} ></CardComponent>)}
+                <CardsSection big={comics.length>4} title="Some comics" emoji="📚" >
+                    {comics.map((e) => <CardComponent key={e.id} id={e.id} name={e.title} img={e.thumbnail.path} ext={e.thumbnail.extension} isHeroe={false} ></CardComponent>)}
                 </CardsSection>
             }
         </div>
