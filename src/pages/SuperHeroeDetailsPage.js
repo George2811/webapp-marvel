@@ -111,7 +111,7 @@ const SuperHeroeDetailsPage = () => {
 
                 <CardContent className={`${classes.textContent}`}>
                     <Typography gutterBottom variant="h5" component="h2" className={classes.text}>
-                        {data.name} {id}
+                        {data.name}
                     </Typography>
 
                     <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
@@ -138,7 +138,7 @@ const SuperHeroeDetailsPage = () => {
             </Card>
             :
             <div className="error-container">            
-                <h2>There´s no info about the heroe yet</h2>
+                <h2>There´s no info about the heroe yet</h2><p>😢</p>
             </div>
             }
             {

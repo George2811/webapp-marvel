@@ -33,7 +33,14 @@ html {
 
 .error-container{
   width: 80vw;
-  text-align: center;  
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-container p {
+  font-size: 2rem;
 }
 
 @media (max-width:1180px) {
