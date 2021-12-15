@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, HashRouter } from "react-router-dom";
 import "./App.css"
 import AppBar from "./components/AppBar"
 import Footer from "./components/Footer";
@@ -11,7 +11,7 @@ import SuperHeroesPage from "./pages/SuperHeroesPage";
 function App() {
   return (
     <div>
-      <Router>
+      <HashRouter>
         <AppBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -22,7 +22,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
-      </Router>     
+      </HashRouter>     
     </div>
   );
 }
