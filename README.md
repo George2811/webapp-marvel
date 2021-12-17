@@ -5,3 +5,5 @@ This application provides details about marvel superheroes, and the comics in wh
 
 ### Technologies
 The web app is developed with the React library, and with the material ui framework
+
+Web: https://wiki-marvel-webapp.web.app/

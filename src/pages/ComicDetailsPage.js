@@ -76,8 +76,8 @@ const ComicsDetailsPage = () => {
         if (data.creators.available<1) return;
 
         setLoading(true);
-        
-        helpHttp().get(`${data.creators.items[0].resourceURI}/comics?limit=8&apikey=7731c14827d6b11928ab689603159fa5`).then((res) => {
+        let idCreator = data.creators.items[0].resourceURI.slice(45);        
+        helpHttp().get(`https://gateway.marvel.com/v1/public/creators/${idCreator}/comics?limit=8&apikey=7731c14827d6b11928ab689603159fa5`).then((res) => {
             if(!res.err && res.data.results.length) {
                 setCreators(res.data.results);
             } 
