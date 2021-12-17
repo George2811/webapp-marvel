@@ -78,7 +78,7 @@ const ComicsDetailsPage = () => {
         setLoading(true);
         
         helpHttp().get(`${data.creators.items[0].resourceURI}/comics?limit=8&apikey=7731c14827d6b11928ab689603159fa5`).then((res) => {
-            if(!res.err && res.data.results) {
+            if(!res.err && res.data.results.length) {
                 setCreators(res.data.results);
             } 
             setLoading(false);

@@ -13,12 +13,12 @@ const Slider = () => {
                 <li id="slide1">
                     <img src={imgs[0]} alt="img1"/>
                 </li>
-                <li id="slide2">
+                {/*<li id="slide2">
                     <img src={imgs[1]} alt="img2"/>
                 </li>
                 <li id="slide3">
                     <img src={imgs[2]} alt="img1"/>
-                </li>
+    </li>
             </ul>            
             <ul className="menu">
                 <li>
@@ -29,7 +29,7 @@ const Slider = () => {
                 </li>
                 <li>
                     <a href="#slide3">3</a>
-                </li>
+                </li>*/}
             </ul>
         
       </div> 
